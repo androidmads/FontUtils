@@ -1,0 +1,1 @@
+include ':app', ':fontutils', ':app_kotlin'
