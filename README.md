@@ -9,7 +9,9 @@ A Tiny Font Utility Library used to apply custom Fonts to
 ## Supported Android Languages
 - [x] Java
 - [x] Kotlin
-- [ ] Xamarin
+- [x] Xamarin
+
+Readme for Xamarin.Android can be found here https://github.com/Xamarin-Gists/XAFontUtilsLibrary.
 
 ## How to download
 Add this line in your app level gradle file (build.gradle)
