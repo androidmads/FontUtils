@@ -18,10 +18,8 @@ import android.widget.TextView;
 
 public class FontUtils {
 
-    private Context context;
-
-    public FontUtils(Context _context) {
-        context = _context;
+    public FontUtils() {
+        
     }
 
     public void applyFontToToolbar(Toolbar toolbar, Typeface typeface) {
