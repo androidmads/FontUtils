@@ -3,7 +3,7 @@ apply plugin: 'com.jfrog.bintray'
 apply plugin: 'com.github.dcendents.android-maven'
 
 group = 'com.ajts.androidmads.fontutils'
-version = '1.0.0'
+version = '1.0.1'
 
 android {
     compileSdkVersion 26
@@ -33,7 +33,7 @@ dependencies {
 
 
 def siteUrl = 'https://androidmads.blogspot.in'      // Homepage URL of the library
-def gitUrl = 'https://androidmads.blogspot.in'   // Git URL
+def gitUrl = 'https://github.com/androidmads/FontUtils.git'   // Git URL
 
 Properties properties = new Properties()
 properties.load(project.rootProject.file('local.properties').newDataInputStream())
@@ -47,10 +47,10 @@ bintray {
         name = 'com.ajts.androidmads.fontutils'
 
         version {
-            name = '1.0.0'
+            name = '1.0.1'
             desc = 'A Tiny Font Utility Library'
             released = new Date()
-            vcsTag = '1.0.0'
+            vcsTag = '1.0.1'
         }
 
         licenses = ['Apache-2.0']
