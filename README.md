@@ -17,7 +17,7 @@ Readme for Xamarin.Android can be found here https://github.com/Xamarin-Gists/XA
 Add this line in your app level gradle file (build.gradle)
 
 ```java
-implementation 'com.ajts.androidmads.fontutils:fontutils:1.0.0'
+implementation 'com.ajts.androidmads.fontutils:fontutils:1.0.1'
 ```
 
 ## How to use
@@ -26,7 +26,7 @@ implementation 'com.ajts.androidmads.fontutils:fontutils:1.0.0'
 // Applying Custom Font
 Typeface typeface = Typeface.createFromAsset(getAssets(), "custom_font.ttf");
 // Init Library
-FontUtils fontUtils = new FontUtils(getApplicationContext());
+FontUtils fontUtils = new FontUtils();
 // Apply font to Toolbar
 fontUtils.applyFontToToolbar(toolbar, typeface);
 // Apply font to NavigationView
@@ -44,7 +44,7 @@ fontUtils.applyFontToView(checkBox, typeface);
 // Applying Custom Font
 val typeface = Typeface.createFromAsset(assets, lato_bold)
 // Init Library
-val fontUtils = FontUtils(applicationContext)
+val fontUtils = FontUtils()
 // Apply font to Toolbar
 fontUtils.applyFontToToolbar(toolbar, typeface)
 // Apply font to NavigationView
