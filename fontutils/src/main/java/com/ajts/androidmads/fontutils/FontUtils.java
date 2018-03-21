@@ -17,6 +17,10 @@ import android.widget.TextView;
 
 public class FontUtils {
 
+    public FontUtils(){
+
+    }
+
     public void applyFontToToolbar(Toolbar toolbar, Typeface typeface) {
         for (int i = 0; i < toolbar.getChildCount(); i++) {
             View view = toolbar.getChildAt(i);
