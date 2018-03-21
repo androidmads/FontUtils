@@ -19,9 +19,9 @@ import com.ajts.androidmads.fontutils.FontUtils
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    internal lateinit var typefaceBold: Typeface
-    internal lateinit var typefaceRegular: Typeface
-    internal lateinit var typefaceLight: Typeface
+    private lateinit var typefaceBold: Typeface
+    private lateinit var typefaceRegular: Typeface
+    private lateinit var typefaceLight: Typeface
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,13 +50,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         typefaceRegular = Typeface.createFromAsset(assets, lato_regular)
 
         // Apply Fonts to Toolbar, NavigationView, Views
-        val fontUtils = FontUtils(applicationContext)
+        val fontUtils = FontUtils()
         fontUtils.applyFontToToolbar(toolbar, typefaceBold)
         fontUtils.applyFontToNavigationView(navigationView, typefaceLight)
         fontUtils.applyFontToView(textView, typefaceRegular)
         fontUtils.applyFontToView(editText, typefaceRegular)
         fontUtils.applyFontToView(radioButton, typefaceBold)
         fontUtils.applyFontToView(checkBox, typefaceLight)
+
     }
 
     override fun onBackPressed() {
@@ -71,7 +72,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.main, menu)
-        val fontUtils = FontUtils(applicationContext)
+        val fontUtils = FontUtils()
         fontUtils.applyFontToMenu(menu, typefaceBold)
         return true
     }

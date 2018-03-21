@@ -54,13 +54,14 @@ public class MainActivity extends AppCompatActivity
         typefaceRegular = Typeface.createFromAsset(getAssets(), lato_regular);
 
         // Apply Fonts to Toolbar, NavigationView, Views
-        FontUtils fontUtils = new FontUtils(getApplicationContext());
+        FontUtils fontUtils = new FontUtils();
         fontUtils.applyFontToToolbar(toolbar, typefaceBold);
         fontUtils.applyFontToNavigationView(navigationView, typefaceLight);
         fontUtils.applyFontToView(textview, typefaceRegular);
         fontUtils.applyFontToView(editText, typefaceRegular);
         fontUtils.applyFontToView(radioButton, typefaceBold);
         fontUtils.applyFontToView(checkBox, typefaceLight);
+
     }
 
     @Override
@@ -77,7 +78,7 @@ public class MainActivity extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
-        FontUtils fontUtils = new FontUtils(getApplicationContext());
+        FontUtils fontUtils = new FontUtils();
         fontUtils.applyFontToMenu(menu, typefaceBold);
         return true;
     }

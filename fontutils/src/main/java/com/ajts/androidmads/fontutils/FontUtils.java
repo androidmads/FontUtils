@@ -1,6 +1,5 @@
 package com.ajts.androidmads.fontutils;
 
-import android.content.Context;
 import android.graphics.Typeface;
 import android.support.design.widget.NavigationView;
 import android.support.v7.widget.Toolbar;
@@ -17,12 +16,6 @@ import android.widget.TextView;
  */
 
 public class FontUtils {
-
-    private Context context;
-
-    public FontUtils(Context _context) {
-        context = _context;
-    }
 
     public void applyFontToToolbar(Toolbar toolbar, Typeface typeface) {
         for (int i = 0; i < toolbar.getChildCount(); i++) {
