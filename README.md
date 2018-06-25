@@ -4,6 +4,8 @@ A Tiny Font Utility Library used to apply custom Fonts to
 * NavigationView
 * Menu
 * Submenu
+* TabLayout
+* RadioGroup
 * Other Views like EditText, TextView, etc.
 
 ## Supported Android Languages
@@ -13,11 +15,14 @@ A Tiny Font Utility Library used to apply custom Fonts to
 
 Readme for Xamarin.Android can be found here https://github.com/Xamarin-Gists/XAFontUtilsLibrary.
 
+## Versions
+* 1.0.2 Added Support for TabLayout and RadioGroup
+
 ## How to download
 Add this line in your app level gradle file (build.gradle)
 
 ```java
-implementation 'com.ajts.androidmads.fontutils:fontutils:1.0.1'
+implementation 'com.ajts.androidmads.fontutils:fontutils:1.0.2'
 ```
 
 ## How to use
@@ -38,6 +43,9 @@ fontUtils.applyFontToView(textview, typeface);
 fontUtils.applyFontToView(editText, typeface);
 fontUtils.applyFontToView(radioButton, typeface);
 fontUtils.applyFontToView(checkBox, typeface);
+
+fontUtils.applyFontToTabLayout(tabLayout, typefaceLight);
+fontUtils.applyFontToRadioGroup(radioGroup, typefaceLight);
 ```
 ### Kotlin
 ```
@@ -56,6 +64,9 @@ fontUtils.applyFontToView(textview, typeface)
 fontUtils.applyFontToView(editText, typeface)
 fontUtils.applyFontToView(radioButton, typeface)
 fontUtils.applyFontToView(checkBox, typeface)
+
+fontUtils.applyFontToTabLayout(tabLayout, typefaceLight)
+fontUtils.applyFontToRadioGroup(radioGroup, typefaceLight)
 ```
 ## License
 ```
