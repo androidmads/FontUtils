@@ -4,7 +4,9 @@ import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
+import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,6 +16,7 @@ import android.view.MenuItem;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.ajts.androidmads.fontutils.FontUtils;
@@ -33,20 +36,26 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
 
         // Init Views
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        TextView textview = (TextView) findViewById(R.id.textView);
-        EditText editText = (EditText) findViewById(R.id.editText);
-        RadioButton radioButton = (RadioButton) findViewById(R.id.radio);
-        CheckBox checkBox = (CheckBox) findViewById(R.id.chkBox);
+        TextView textview = findViewById(R.id.textView);
+        EditText editText = findViewById(R.id.editText);
+        RadioButton radioButton = findViewById(R.id.radio);
+        CheckBox checkBox = findViewById(R.id.chkBox);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        ViewPager viewPager = findViewById(R.id.viewpager);
+        TabLayout tabLayout = findViewById(R.id.tabs);
+        RadioGroup radioGroup = findViewById(R.id.radioGroup);
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        setupViewPager(viewPager);
+        tabLayout.setupWithViewPager(viewPager);
+
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
         typefaceBold = Typeface.createFromAsset(getAssets(), lato_bold);
@@ -61,12 +70,22 @@ public class MainActivity extends AppCompatActivity
         fontUtils.applyFontToView(editText, typefaceRegular);
         fontUtils.applyFontToView(radioButton, typefaceBold);
         fontUtils.applyFontToView(checkBox, typefaceLight);
+        fontUtils.applyFontToTabLayout(tabLayout, typefaceLight);
+        fontUtils.applyFontToRadioGroup(radioGroup, typefaceLight);
 
+    }
+
+    private void setupViewPager(ViewPager viewPager) {
+        ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
+        adapter.addFragment(new TabFragment(), "ONE");
+        adapter.addFragment(new TabFragment(), "TWO");
+        adapter.addFragment(new TabFragment(), "THREE");
+        viewPager.setAdapter(adapter);
     }
 
     @Override
     public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
@@ -115,7 +134,7 @@ public class MainActivity extends AppCompatActivity
 
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }

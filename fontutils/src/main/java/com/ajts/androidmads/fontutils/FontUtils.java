@@ -2,6 +2,7 @@ package com.ajts.androidmads.fontutils;
 
 import android.graphics.Typeface;
 import android.support.design.widget.NavigationView;
+import android.support.design.widget.TabLayout;
 import android.support.v7.widget.Toolbar;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -9,6 +10,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.SubMenu;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 /**
@@ -76,6 +79,34 @@ public class FontUtils {
         if (view instanceof TextView) {
             TextView tv = (TextView) view;
             tv.setTypeface(typeface);
+        }
+    }
+
+    public void applyFontToRadioGroup(RadioGroup radioGroup, Typeface typeface) {
+            for (int i = 0; i < radioGroup.getChildCount(); i++) {
+                View tabViewChild = radioGroup.getChildAt(i);
+                if (tabViewChild instanceof TextView) {
+                    applyFontToView((TextView) tabViewChild, typeface);
+                }
+            }
+    }
+
+    public void applyFontToTabLayout(TabLayout tabLayout, Typeface typeface) {
+        ViewGroup vg = (ViewGroup) tabLayout.getChildAt(0);
+        int tabsCount = vg.getChildCount();
+
+        for (int j = 0; j < tabsCount; j++) {
+            ViewGroup vgTab = (ViewGroup) vg.getChildAt(j);
+
+            int tabChildsCount = vgTab.getChildCount();
+
+            for (int i = 0; i < tabChildsCount; i++) {
+                View tabViewChild = vgTab.getChildAt(i);
+                if (tabViewChild instanceof TextView) {
+                    TextView tv = (TextView) tabViewChild;
+                    tv.setTypeface(typeface);
+                }
+            }
         }
     }
 

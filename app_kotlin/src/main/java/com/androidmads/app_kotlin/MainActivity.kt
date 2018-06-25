@@ -3,7 +3,9 @@ package com.androidmads.app_kotlin
 import android.graphics.Typeface
 import android.os.Bundle
 import android.support.design.widget.NavigationView
+import android.support.design.widget.TabLayout
 import android.support.v4.view.GravityCompat
+import android.support.v4.view.ViewPager
 import android.support.v4.widget.DrawerLayout
 import android.support.v7.app.ActionBarDrawerToggle
 import android.support.v7.app.AppCompatActivity
@@ -11,10 +13,7 @@ import android.support.v7.widget.Toolbar
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
-import android.widget.CheckBox
-import android.widget.EditText
-import android.widget.RadioButton
-import android.widget.TextView
+import android.widget.*
 import com.ajts.androidmads.fontutils.FontUtils
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
@@ -35,14 +34,19 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val editText = findViewById<View>(R.id.editText) as EditText
         val radioButton = findViewById<View>(R.id.radio) as RadioButton
         val checkBox = findViewById<View>(R.id.chkBox) as CheckBox
-
+        val navigationView = findViewById<View>(R.id.nav_view) as NavigationView
         val drawer = findViewById<View>(R.id.drawer_layout) as DrawerLayout
+        val viewPager = findViewById<ViewPager>(R.id.viewpager)
+        val tabLayout = findViewById<TabLayout>(R.id.tabs)
+        val radioGroup = findViewById<RadioGroup>(R.id.radioGroup)
+
+        setupViewPager(viewPager)
+        tabLayout.setupWithViewPager(viewPager)
         val toggle = ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close)
         drawer.addDrawerListener(toggle)
         toggle.syncState()
 
-        val navigationView = findViewById<View>(R.id.nav_view) as NavigationView
         navigationView.setNavigationItemSelectedListener(this)
 
         typefaceBold = Typeface.createFromAsset(assets, lato_bold)
@@ -57,7 +61,17 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         fontUtils.applyFontToView(editText, typefaceRegular)
         fontUtils.applyFontToView(radioButton, typefaceBold)
         fontUtils.applyFontToView(checkBox, typefaceLight)
+        fontUtils.applyFontToTabLayout(tabLayout, typefaceLight)
+        fontUtils.applyFontToRadioGroup(radioGroup, typefaceLight)
 
+    }
+
+    private fun setupViewPager(viewPager: ViewPager) {
+        val adapter = ViewPagerAdapter(supportFragmentManager)
+        adapter.addFragment(TabFragment(), "ONE")
+        adapter.addFragment(TabFragment(), "TWO")
+        adapter.addFragment(TabFragment(), "THREE")
+        viewPager.adapter = adapter
     }
 
     override fun onBackPressed() {
