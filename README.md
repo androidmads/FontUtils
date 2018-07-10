@@ -15,6 +15,8 @@ A Tiny Font Utility Library used to apply custom Fonts to
 
 Readme for Xamarin.Android can be found here https://github.com/Xamarin-Gists/XAFontUtilsLibrary.
 
+[![Support Me](https://www.ko-fi.com/img/donate_sm.png)](https://ko-fi.com/T6T0A1CC)
+
 ## Versions
 * 1.0.2 Added Support for TabLayout and RadioGroup
 
